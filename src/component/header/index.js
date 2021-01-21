@@ -6,7 +6,7 @@ const Header = (props) => {
     return (
         <header data-test="headerComponent">
             <div className="wrap">
-                <div className="logo">
+                <div data-test="logoIMG">
                     <img src={Logo} alt="Logo" />
                 </div>
             </div>
