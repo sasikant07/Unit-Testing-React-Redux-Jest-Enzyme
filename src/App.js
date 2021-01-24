@@ -40,7 +40,7 @@ function App(props) {
   }
 
   const exampleMethod_resturnsAValue = (number) => {
-    return mnumber + 1;
+    return number + 1;
   };
 
   return (
