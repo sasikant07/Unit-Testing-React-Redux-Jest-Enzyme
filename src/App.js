@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 
 import Headline from './component/headline';
@@ -16,11 +16,14 @@ const tempArr = [{
   onlineStatus: true
 }];
 
+
 function App(props) {
   const dispatch = useDispatch();
+  const [hideBtn, setHideBtn] = useState(false);
 
   const fetch = () => {
     dispatch(fetchPosts());
+    exampleMethod_updatesState();
   }
 
   const configButton = {
@@ -30,12 +33,24 @@ function App(props) {
 
   const { posts } = props;
 
+  const exampleMethod_updatesState = () => {
+    setHideBtn({
+      hideBtn: !hideBtn
+    });
+  }
+
+  const exampleMethod_resturnsAValue = (number) => {
+    return mnumber + 1;
+  };
+
   return (
     <div className="App" data-test="appComponent">
       <Header />
       <section className="main">
         <Headline header="Posts" desc="Click the button to render posts!" tempArr={tempArr} />
-        <SharedButton {...configButton} />
+        {!hideBtn &&
+          <SharedButton {...configButton} />
+        }
         {posts.length > 0 &&
           <div>
             {posts.map((post, index) => {
